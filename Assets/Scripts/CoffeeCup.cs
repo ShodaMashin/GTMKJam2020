@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CoffeeCup : MonoBehaviour
+public class CoffeeCup
 {
     public float grindQuality;
     public float milkQuality;
