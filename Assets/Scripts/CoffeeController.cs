@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class CoffeeController : MonoBehaviour
 {
+    public GrindingRenderer grindGame;
+    public Canvas grindCanvas;
+    public Canvas steamCanvas;
+    public Canvas pourCanvas;
+
     public CoffeeCup currentCup;
     private string currentStep;
     private char lastKeyPressed;
@@ -45,23 +50,29 @@ public class CoffeeController : MonoBehaviour
         {
             case "grind":
                 currentStep = "steam";
+                grindCanvas.enabled = false;
+                steamCanvas.enabled = true;
 
                 Debug.Log("steaming");
                 break;
             case "steam":
                 currentStep = "pour";
+                steamCanvas.enabled = false;
+                pourCanvas.enabled = true;
 
                 Debug.Log("pouring");
                 break;
             case "pour":
                 SendCup();
                 currentStep = "none";
+                pourCanvas.enabled = false;
 
                 Debug.Log("new cup");
                 break;
             case "none":
                 NewCup();
                 currentStep = "grind";
+                grindCanvas.enabled = true;
 
                 Debug.Log("grinding");
                 break;
@@ -86,17 +97,19 @@ public class CoffeeController : MonoBehaviour
         if (keyPressed != lastKeyPressed && keyPressed != ' ')
         {
             currentCup.grindQuality += 1;
+            if (currentCup.grindQuality > 100) currentCup.grindQuality = 100;
+
             Debug.Log(currentCup.grindQuality);
 
             lastKeyPressed = keyPressed;
         }
+
+        grindGame.UpdateBar(currentCup.grindQuality);
     }
 
     public void SteamMilk()
     {
-        float quality = 0;
-
-        currentCup.milkQuality = quality;
+        // TODO logic for milk steaming and interact with the SteamingRenderer
     }
 
     public void PourCoffee()
