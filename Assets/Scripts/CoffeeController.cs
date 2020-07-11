@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Dynamic;
 using UnityEngine;
 
 public class CoffeeController : MonoBehaviour
@@ -8,11 +9,15 @@ public class CoffeeController : MonoBehaviour
     private string currentStep;
     private char lastKeyPressed;
 
+    private DriverController dc;
+
     // Start is called before the first frame update
     void Start()
     {
         currentStep = "none";
         lastKeyPressed = ' ';
+
+        dc = GetComponent<DriverController>();
     }
 
     // Update is called once per frame
@@ -110,6 +115,7 @@ public class CoffeeController : MonoBehaviour
     {
         currentCup.totalQuality = (currentCup.grindQuality + currentCup.milkQuality + currentCup.pourQuality) / 3;
         Debug.Log("sending");
-        // send cup to driver/game controller idk
+
+        dc.giveCoffee(currentCup);
     }
 }
