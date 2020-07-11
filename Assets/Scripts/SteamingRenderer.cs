@@ -6,13 +6,14 @@ public class SteamingRenderer : MonoBehaviour
 {
     public RectTransform bar;
     public RectTransform slider;
-    private float maxWidth, minWidth;
+    private float maxWidth, minWidth, center;
 
     // Start is called before the first frame update
     void Start()
     {
-        maxWidth = bar.rect.width;
+        maxWidth = bar.rect.width / 2;
         minWidth = -(bar.rect.width / 2);
+        center = slider.position.x;
     }
 
     public void UpdateBar(float percentage)
@@ -24,6 +25,6 @@ public class SteamingRenderer : MonoBehaviour
             currentWidth = maxWidth;
         }
 
-        slider.position = new Vector3(minWidth + currentWidth, slider.position.y, slider.position.z);
+        slider.position = new Vector3(center + minWidth + currentWidth, slider.position.y, slider.position.z);
     }
 }

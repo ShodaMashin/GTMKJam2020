@@ -4,14 +4,23 @@ using UnityEngine;
 
 public class CoffeeController : MonoBehaviour
 {
+    // Other objects
     public GrindingRenderer grindGame;
     public Canvas grindCanvas;
+    public SteamingRenderer steamGame;
     public Canvas steamCanvas;
     public Canvas pourCanvas;
 
+    // Tracking coffee progress
     public CoffeeCup currentCup;
     private string currentStep;
+
+    // Grinding game
     private char lastKeyPressed;
+
+    // Steaming game
+    private float steamBarPos;
+    private float steamBarVelocity = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +94,8 @@ public class CoffeeController : MonoBehaviour
         currentCup.grindQuality = 0;
         currentCup.milkQuality = 0;
         currentCup.pourQuality = 0;
+
+        steamBarPos = 0;
     }
 
     public void GrindCoffee()
@@ -110,6 +121,20 @@ public class CoffeeController : MonoBehaviour
     public void SteamMilk()
     {
         // TODO logic for milk steaming and interact with the SteamingRenderer
+        steamBarPos += steamBarVelocity * Time.deltaTime;
+
+        if (steamBarPos >= 100)
+        {
+            steamBarVelocity = -steamBarVelocity;
+            steamBarPos = 100;
+        }
+        else if(steamBarPos <= 0)
+        {
+            steamBarVelocity = -steamBarVelocity;
+            steamBarPos = 0;
+        }
+
+        steamGame.UpdateBar(steamBarPos);
     }
 
     public void PourCoffee()
