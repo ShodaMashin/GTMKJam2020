@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
+using System.Security.Permissions;
 using System.Threading;
 using UnityEngine;
 
@@ -28,8 +30,7 @@ public class DriverController : MonoBehaviour
         }
         else
         {
-            // TODO: cause damage to bus
-            // take a major value off the static bus health field
+            Storage.BusHealth -= 5 * Time.deltaTime;
         }
     }
 
