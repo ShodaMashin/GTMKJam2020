@@ -48,6 +48,5 @@ public class DriverController : MonoBehaviour
         {
             awakeLevel = 0f;
         }
-        Debug.Log(awakeLevel);
     }
 }
