@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class DriverController : MonoBehaviour
 {
     // Once value reaches zero driver falls asleep
-    [Serializable]
+    [SerializeField]
     private float awakeLevel = 100f;
-    [Serializable]
-    private float decayRate = 0.1f;
-    [Serializable]
+    [SerializeField]
+    private float decayRate = 1f;
+
     private const float COFFEEVALUE = 33f;
 
     // Start is called before the first frame update
@@ -43,10 +43,11 @@ public class DriverController : MonoBehaviour
     {
         if(awakeLevel - decayRate > 0)
         {
-            awakeLevel -= decayRate;
+            awakeLevel -= decayRate * Time.deltaTime;
         } else
         {
             awakeLevel = 0f;
         }
+        Debug.Log(awakeLevel);
     }
 }
