@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyStats: {fileID: 11400000, guid: d3f53423e819d1e4d881294ee0cafdbe, type: 2}
+  enemyProjPrefab: {fileID: 3334534043309253956, guid: 963c1be5107e1da408a53869a4737343,
+    type: 3}
   health: 0
 --- !u!61 &122418721236622556
 BoxCollider2D:

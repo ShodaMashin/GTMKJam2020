@@ -29,9 +29,13 @@ namespace Controllers
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("PlayerProj"))
             {
                 other.gameObject.GetComponent<EnemyController>().DamageEnemy(20);
+                Destroy(gameObject);
+            } else if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("EnemyProj"))
+            {
+                // other.gameObject.GetComponent<BusController>().DamageBus(5);
                 Destroy(gameObject);
             }
         }

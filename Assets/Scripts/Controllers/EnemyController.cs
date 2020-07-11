@@ -1,4 +1,5 @@
-﻿using Generics;
+﻿using System.Collections;
+using Generics;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -7,11 +8,13 @@ namespace Controllers
     public class EnemyController : MonoBehaviour
     {
         public GenericEnemy enemyStats;
+        public GameObject enemyProjPrefab; 
 
         private enum Phase
         {
             Move,
-            Shoot
+            Shoot,
+            Shooting
         }
 
         private Phase _currentPhase = Phase.Move;
@@ -26,7 +29,7 @@ namespace Controllers
             health = enemyStats.enemyHealth;
         }
         
-        // While X<1.5, Move right. Stop at X=1.5 and Shoot at Bus
+        // While X<1.5, Move right. Stop at X=1.5 and Shoot at Bus every 3? seconds
         
         public void DamageEnemy(int damage)
         {
@@ -54,7 +57,18 @@ namespace Controllers
                 }
             } else if (_currentPhase == Phase.Shoot)
             {
-                // Shooting code here
+                StartCoroutine(AttackBus());
+                _currentPhase = Phase.Shooting;
+            }
+        }
+
+        private IEnumerator AttackBus()
+        {    
+            while (true)
+            {
+                var newProj = Instantiate(enemyProjPrefab, gameObject.transform.position, Quaternion.identity);
+                enemyProjPrefab.GetComponent<ProjectileController>().target = GameObject.Find("Bus").transform.position;
+                yield return new WaitForSeconds(enemyStats.attackSpeed);
             }
         }
     }
