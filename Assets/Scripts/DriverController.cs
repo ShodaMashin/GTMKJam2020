@@ -12,6 +12,8 @@ public class DriverController : MonoBehaviour
     private float awakeLevel = 100f;
     [SerializeField]
     private float decayRate = 1f;
+    [SerializeField]
+    private float busDamageRate = 5f;
 
     private const float COFFEEVALUE = 33f;
 
@@ -30,7 +32,14 @@ public class DriverController : MonoBehaviour
         }
         else
         {
-            Storage.BusHealth -= 5 * Time.deltaTime;
+            if (Storage.BusHealth - busDamageRate > 0)
+            {
+                Storage.BusHealth -= busDamageRate * Time.deltaTime;
+            }
+            else
+            {
+                Storage.BusHealth = 0f;
+            }
         }
     }
 
@@ -45,7 +54,8 @@ public class DriverController : MonoBehaviour
         if(awakeLevel - decayRate > 0)
         {
             awakeLevel -= decayRate * Time.deltaTime;
-        } else
+        } 
+        else
         {
             awakeLevel = 0f;
         }
