@@ -10,6 +10,7 @@ public class CoffeeController : MonoBehaviour
     public Canvas grindCanvas;
     public SteamingRenderer steamGame;
     public Canvas steamCanvas;
+    public PouringRenderer pourGame;
     public Canvas pourCanvas;
 
     // Tracking coffee progress
@@ -131,7 +132,7 @@ public class CoffeeController : MonoBehaviour
 
         grindGame.UpdateBar(currentCup.grindQuality);
 
-        if (Input.GetKeyDown(KeyCode.Space) );
+        if (Input.GetKeyDown(KeyCode.Space) && currentCup.grindQuality > 0)
         {
             NextStep();
         }
@@ -195,12 +196,16 @@ public class CoffeeController : MonoBehaviour
             if (keyCoffee)
             {
                 coffeeRatio += pourVelocity * Time.deltaTime;
+                Debug.Log(coffeeRatio);
             }
             if (keyMilk)
             {
                 milkRatio += pourVelocity * Time.deltaTime;
+                Debug.Log(milkRatio);
             }
         }
+
+        pourGame.UpdateBar(coffeeRatio, milkRatio, THRESHOLD);
 
         // Quality = pour ratio percentage distance from perfect pour ratio
         // Quality is in range 0 - 100
