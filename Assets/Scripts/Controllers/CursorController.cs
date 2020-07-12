@@ -17,7 +17,17 @@ namespace Controllers
         // Update is called once per frame
         void Update()
         {
+            
+        }
 
+        public void SetCursorTarget()
+        {
+            Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        }
+
+        public void SetCursorDefault()
+        {
+            Cursor.SetCursor(null, hotSpot, cursorMode);
         }
     }
 }

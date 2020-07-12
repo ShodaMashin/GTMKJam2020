@@ -44,7 +44,7 @@ public class CoffeeController : MonoBehaviour
         steamCanvas.enabled = false;
         pourCanvas.enabled = false;
 
-        dc = GetComponent<DriverController>();
+        dc = FindObjectOfType<DriverController>();
     }
 
     // Update is called once per frame
@@ -117,6 +117,9 @@ public class CoffeeController : MonoBehaviour
 
         coffeeRatio = 0;
         milkRatio = 0;
+
+        grindGame.ResetSprite();
+        steamGame.ResetSprite();
     }
 
     public void GrindCoffee()
@@ -128,10 +131,11 @@ public class CoffeeController : MonoBehaviour
 
         if (keyPressed != lastKeyPressed && keyPressed != ' ')
         {
-            currentCup.grindQuality += 1;
+            currentCup.grindQuality += 3;
             if (currentCup.grindQuality > 100) currentCup.grindQuality = 100;
 
             Debug.Log(currentCup.grindQuality);
+            grindGame.UpdateSprite();
 
             lastKeyPressed = keyPressed;
         }
@@ -141,7 +145,7 @@ public class CoffeeController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && currentCup.grindQuality > 0)
         {
             NextStep();
-        }
+        } 
     }
 
     public void SteamMilk()
@@ -160,7 +164,7 @@ public class CoffeeController : MonoBehaviour
             steamBarPos = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && steamBarVelocity != 0)
         {
             steamBarVelocity = 0;
 
@@ -174,6 +178,8 @@ public class CoffeeController : MonoBehaviour
                 quality = -(steamBarPos - 100) * 2;
             }
 
+            steamGame.UpdateSprite();
+
             currentCup.milkQuality = quality;
         }
 
@@ -181,6 +187,8 @@ public class CoffeeController : MonoBehaviour
         {
             steamBarVelocity = 200;
             steamBarPos = 0;
+
+            steamGame.UpdateSprite();
         }
 
         steamGame.UpdateBar(steamBarPos);
@@ -197,17 +205,25 @@ public class CoffeeController : MonoBehaviour
         bool keyCoffee = Input.GetKey(KeyCode.A);
         bool keyMilk = Input.GetKey(KeyCode.D);
 
+        pourGame.UpdateSprite("noPour");
+
         if (coffeeRatio + milkRatio <= THRESHOLD * 2)
         {
             if (keyCoffee)
             {
                 coffeeRatio += pourVelocity * Time.deltaTime;
+                pourGame.UpdateSprite("pourCoffee");
                 Debug.Log(coffeeRatio);
             }
             if (keyMilk)
             {
                 milkRatio += pourVelocity * Time.deltaTime;
+                pourGame.UpdateSprite("pourMilk");
                 Debug.Log(milkRatio);
+            }
+            if(keyCoffee && keyMilk)
+            {
+                pourGame.UpdateSprite("pourBoth");
             }
         }
 
@@ -216,8 +232,7 @@ public class CoffeeController : MonoBehaviour
         // Quality = pour ratio percentage distance from perfect pour ratio
         // Quality is in range 0 - 100
         currentCup.pourQuality = Math.Max(0, 100 * (1 - Math.Abs((POURTARGET - (coffeeRatio / (coffeeRatio + milkRatio))) / POURTARGET)));
-        Debug.Log("QUA:" + currentCup.pourQuality);
-        Debug.Log("VOL:" + (coffeeRatio + milkRatio));
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && (coffeeRatio + milkRatio) >= THRESHOLD)
         {

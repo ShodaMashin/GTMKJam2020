@@ -5,6 +5,7 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="BusHealthRenderer.cs" t="Include" />
           <e p="CoffeeCup.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="BusController.cs" t="Include" />
@@ -14,7 +15,9 @@
             <e p="EnemyController.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="ProjectileController.cs" t="Include" />
+            <e p="SpriteController.cs" t="Include" />
           </e>
+          <e p="DriverRenderer.cs" t="Include" />
           <e p="Generics" t="Include">
             <e p="GenericEnemy.cs" t="Include" />
           </e>

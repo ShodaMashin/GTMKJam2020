@@ -1,9 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GrindingRenderer : MonoBehaviour
 {
+    public Sprite grinderLeft, grinderRight;
+    public Image image;
+
     public RectTransform progressBar;
     private float maxWidth;
 
@@ -23,5 +27,22 @@ public class GrindingRenderer : MonoBehaviour
         }
 
         progressBar.sizeDelta = new Vector2(currentWidth - maxWidth - 6, progressBar.sizeDelta.y);
+    }
+
+    public void UpdateSprite()
+    {
+        if(image.sprite == grinderLeft)
+        {
+            image.sprite = grinderRight;
+        }
+        else
+        {
+            image.sprite = grinderLeft;
+        }
+    }
+
+    public void ResetSprite()
+    {
+        image.sprite = grinderRight;
     }
 }

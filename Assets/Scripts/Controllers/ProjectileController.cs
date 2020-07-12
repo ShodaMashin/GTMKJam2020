@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Controllers
 {
@@ -31,11 +30,11 @@ namespace Controllers
         {
             if (other.gameObject.CompareTag("Enemy") && gameObject.CompareTag("PlayerProj"))
             {
-                other.gameObject.GetComponent<EnemyController>().DamageEnemy(20);
+                other.gameObject.GetComponent<EnemyController>().DamageEnemy(100);
                 Destroy(gameObject);
             } else if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("EnemyProj"))
             {
-                other.gameObject.GetComponent<BusController>().DamageBus(5);
+                other.gameObject.GetComponent<BusController>().DamageBus(1);
                 Destroy(gameObject);
             }
         }

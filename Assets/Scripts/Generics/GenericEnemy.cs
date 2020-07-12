@@ -10,7 +10,8 @@ namespace Generics
         public float enemySpeed;
         public string enemyType;
         public float attackSpeed;
-        public Sprite sprite;
+        public Sprite spriteA;
+        public Sprite spriteB;
 
         public void SetEnemyHealth(float hp)
         {
@@ -31,7 +32,7 @@ namespace Generics
         {
             attackSpeed = aS;
         }
-
+        
         public float GetAttackSpeed()
         {
             return attackSpeed;
