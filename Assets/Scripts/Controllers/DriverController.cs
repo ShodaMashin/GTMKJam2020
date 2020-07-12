@@ -15,7 +15,7 @@ public class DriverController : MonoBehaviour
     [SerializeField]
     private float busDamageRate = 5f;
 
-    private const float COFFEEVALUE = 33f;
+    private const float COFFEEVALUE = 50f;
 
     // Start is called before the first frame update
     void Start()
