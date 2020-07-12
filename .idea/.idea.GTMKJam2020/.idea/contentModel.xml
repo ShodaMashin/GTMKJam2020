@@ -8,6 +8,7 @@
           <e p="CoffeeCup.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="BusController.cs" t="Include" />
+            <e p="CameraController.cs" t="Include" />
             <e p="CoffeeController.cs" t="Include" />
             <e p="CursorController.cs" t="Include" />
             <e p="DriverController.cs" t="Include" />
