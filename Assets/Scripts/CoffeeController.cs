@@ -20,13 +20,17 @@ public class CoffeeController : MonoBehaviour
 
     // Steaming game
     private float steamBarPos;
-    private float steamBarVelocity = 200;
+    private float steamBarVelocity;
 
     // Start is called before the first frame update
     void Start()
     {
         currentStep = "none";
         lastKeyPressed = ' ';
+
+        grindCanvas.enabled = false;
+        steamCanvas.enabled = false;
+        pourCanvas.enabled = false;
     }
 
     // Update is called once per frame
@@ -96,6 +100,7 @@ public class CoffeeController : MonoBehaviour
         currentCup.pourQuality = 0;
 
         steamBarPos = 0;
+        steamBarVelocity = 200;
     }
 
     public void GrindCoffee()
@@ -131,6 +136,29 @@ public class CoffeeController : MonoBehaviour
         else if(steamBarPos <= 0)
         {
             steamBarVelocity = -steamBarVelocity;
+            steamBarPos = 0;
+        }
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            steamBarVelocity = 0;
+
+            float quality;
+            if(steamBarPos < 50)
+            {
+                quality = steamBarPos * 2;
+            }
+            else
+            {
+                quality = -(steamBarPos - 100) * 2;
+            }
+
+            currentCup.milkQuality = quality;
+        }
+
+        if(steamBarVelocity == 0 && Input.GetKeyDown(KeyCode.R))
+        {
+            steamBarVelocity = 200;
             steamBarPos = 0;
         }
 
