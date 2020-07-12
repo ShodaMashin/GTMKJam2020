@@ -28,6 +28,7 @@ public class CoffeeController : MonoBehaviour
     private float pourVelocity = 40;
     private float coffeeRatio = 0;
     private float milkRatio = 0;
+    private const float POURTARGET = 0.2f;
     private const float THRESHOLD = 100;
 
     // Start is called before the first frame update
@@ -209,7 +210,9 @@ public class CoffeeController : MonoBehaviour
 
         // Quality = pour ratio percentage distance from perfect pour ratio
         // Quality is in range 0 - 100
-        currentCup.pourQuality = 100 * (1 - Math.Abs(0.2f - (coffeeRatio / (coffeeRatio + milkRatio))));
+        currentCup.pourQuality = Math.Max(0, 100 * (1 - Math.Abs((POURTARGET - (coffeeRatio / (coffeeRatio + milkRatio))) / POURTARGET)));
+        Debug.Log("QUA:" + currentCup.pourQuality);
+        Debug.Log("VOL:" + (coffeeRatio + milkRatio));
 
         if (Input.GetKeyDown(KeyCode.Space) && (coffeeRatio + milkRatio) >= THRESHOLD)
         {
