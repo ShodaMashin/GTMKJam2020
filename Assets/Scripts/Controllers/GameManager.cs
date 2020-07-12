@@ -13,6 +13,7 @@ namespace Controllers
         public GameObject gameOverScreen;
         public GameObject coffeeScene;
         public GameObject cursorObject;
+        public GameObject DriverViewBus;
 
         public Button sceneSwitchButton;
         
@@ -83,11 +84,13 @@ namespace Controllers
             {
                 case Storage.GameState.Bus:
                     coffeeScene.SetActive(true);
+                    DriverViewBus.SetActive(false);
                     Storage.CurrentGameState = Storage.GameState.Coffee;
                     cursorObject.GetComponent<CursorController>().SetCursorDefault();
                     break;
                 case Storage.GameState.Coffee:
                     coffeeScene.SetActive(false);
+                    DriverViewBus.SetActive(true);
                     Storage.CurrentGameState = Storage.GameState.Bus;
                     cursorObject.GetComponent<CursorController>().SetCursorTarget();
                     break;
