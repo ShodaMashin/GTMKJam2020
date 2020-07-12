@@ -148,8 +148,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.02, y: 0.02, z: 0}
   m_LocalScale: {x: 5, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2017151915}
+  m_Children: []
   m_Father: {fileID: 1980686115}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -203,6 +202,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &601743279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 601743280}
+  m_Layer: 0
+  m_Name: BusCannonHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &601743280
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601743279}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.344, y: 1.275, z: -12.366875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2017151915}
+  m_Father: {fileID: 1980686115}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &650935354
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,7 +341,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1196083114}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.65, y: -3.34, z: -4.6670647}
+  m_LocalPosition: {x: 14.01, y: -4.73, z: -4.6670647}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -437,11 +467,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1443803692}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.709077, y: 1.3853142, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.026475191, y: -0.474, z: 0}
+  m_LocalScale: {x: 2.5, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1980686115}
+  m_Father: {fileID: 2017151915}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1502068182
@@ -546,7 +576,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1515003874}
   - component: {fileID: 1515003876}
-  - component: {fileID: 1515003875}
   m_Layer: 0
   m_Name: Driver Camera
   m_TagString: Untagged
@@ -562,20 +591,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515003873}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.05, y: 0, z: -10}
+  m_LocalPosition: {x: 18.57, y: 0, z: -10}
   m_LocalScale: {x: 0, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 650935355}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1515003875
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1515003873}
-  m_Enabled: 1
 --- !u!20 &1515003876
 Camera:
   m_ObjectHideFlags: 0
@@ -603,7 +624,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5.2141385
+  orthographic size: 6.3678184
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -739,8 +760,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1637051572}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 5.544, y: 3.46, z: -4.74856}
-  m_LocalScale: {x: 0.5859785, y: 1, z: 0.30419332}
+  m_LocalPosition: {x: 6.2161, y: 3.0056, z: -4.74856}
+  m_LocalScale: {x: 0.4407603, y: 0.99999994, z: 0.39507195}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -774,7 +795,7 @@ Transform:
   m_LocalPosition: {x: 5.9, y: -4.12, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1443803693}
+  - {fileID: 601743280}
   - {fileID: 251306234}
   m_Father: {fileID: 650935355}
   m_RootOrder: 0
@@ -828,7 +849,7 @@ GameObject:
   - component: {fileID: 2017151915}
   - component: {fileID: 2017151916}
   m_Layer: 0
-  m_Name: Bus Cannon
+  m_Name: BusCannon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -841,13 +862,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017151914}
-  m_LocalRotation: {x: -0, y: -0, z: 0.0390385, w: 0.9992377}
-  m_LocalPosition: {x: -0.507, y: 0.88999987, z: 0}
-  m_LocalScale: {x: 0.1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 251306234}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.06, y: -0.7611011, z: 12.366875}
+  m_LocalScale: {x: 0.4, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1443803693}
+  m_Father: {fileID: 601743280}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.4750004}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2017151916
 SpriteRenderer:
   m_ObjectHideFlags: 0
