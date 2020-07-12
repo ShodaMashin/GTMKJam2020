@@ -131,7 +131,7 @@ public class CoffeeController : MonoBehaviour
 
         if (keyPressed != lastKeyPressed && keyPressed != ' ')
         {
-            currentCup.grindQuality += 1;
+            currentCup.grindQuality += 3;
             if (currentCup.grindQuality > 100) currentCup.grindQuality = 100;
 
             Debug.Log(currentCup.grindQuality);
