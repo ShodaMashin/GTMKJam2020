@@ -18,6 +18,9 @@
           <e p="Generics" t="Include">
             <e p="GenericEnemy.cs" t="Include" />
           </e>
+          <e p="GrindingRenderer.cs" t="Include" />
+          <e p="PouringRenderer.cs" t="Include" />
+          <e p="SteamingRenderer.cs" t="Include" />
           <e p="Storage.cs" t="Include" />
         </e>
       </e>
