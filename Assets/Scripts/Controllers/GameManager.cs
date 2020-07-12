@@ -30,7 +30,7 @@ namespace Controllers
             if (Input.GetMouseButtonDown(0))
             {
                 var newProj = Instantiate(projPrefab, GameObject.Find("BulletStartPos").transform.position, Quaternion.identity);
-                projPrefab.GetComponent<ProjectileController>().target = _cam.ScreenToWorldPoint(Input.mousePosition);
+                newProj.GetComponent<ProjectileController>().target = _cam.ScreenToWorldPoint(Input.mousePosition);
             }
         }
 
