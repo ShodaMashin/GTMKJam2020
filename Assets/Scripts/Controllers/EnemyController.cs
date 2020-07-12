@@ -8,8 +8,8 @@ namespace Controllers
     public class EnemyController : MonoBehaviour
     {
         public GenericEnemy enemyStats;
-        public GameObject enemyProjPrefab; 
-        
+        public GameObject enemyProjPrefab;
+
         private enum Phase
         {
             Move,
@@ -25,11 +25,9 @@ namespace Controllers
         // Start is called before the first frame update
         void Start()
         {
-            SpriteRenderer rend = GetComponent<SpriteRenderer>();
-            rend.sprite = enemyStats.sprite;
-        
             health = enemyStats.enemyHealth;
             _stoppingPos = Random.Range(0.0f, 1.5f);
+            StartCoroutine(AnimateEnemy());
         }
         
         // While X<1.5, Move right. Stop at X=1.5 and Shoot at Bus every 3? seconds
@@ -72,6 +70,22 @@ namespace Controllers
                 var newProj = Instantiate(enemyProjPrefab, gameObject.transform.position, Quaternion.identity);
                 newProj.GetComponent<ProjectileController>().target = GameObject.Find("Bus").transform.position;
                 yield return new WaitForSeconds(enemyStats.attackSpeed);
+            }
+        }
+
+        private IEnumerator AnimateEnemy()
+        {
+            while (true)
+            {
+               var currentSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+               if (currentSpriteRenderer.sprite == enemyStats.spriteA)
+               {
+                   currentSpriteRenderer.sprite = enemyStats.spriteB;
+               } else if (currentSpriteRenderer.sprite == enemyStats.spriteB)
+               {
+                   currentSpriteRenderer.sprite = enemyStats.spriteA;
+               }
+               yield return new WaitForSeconds(0.5f);
             }
         }
     }
