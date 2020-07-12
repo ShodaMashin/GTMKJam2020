@@ -55,6 +55,10 @@ public class CoffeeController : MonoBehaviour
                 PourCoffee();
             break;
             case "none":
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    NextStep();
+                }
             break;
         }
     }
@@ -127,7 +131,7 @@ public class CoffeeController : MonoBehaviour
 
         grindGame.UpdateBar(currentCup.grindQuality);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) );
         {
             NextStep();
         }
@@ -174,7 +178,7 @@ public class CoffeeController : MonoBehaviour
 
         steamGame.UpdateBar(steamBarPos);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && steamBarVelocity == 0)
         {
             NextStep();
         }
