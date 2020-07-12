@@ -29,7 +29,7 @@ public class CoffeeController : MonoBehaviour
     private float pourVelocity = 40;
     private float coffeeRatio = 0;
     private float milkRatio = 0;
-    private const float POURTARGET = 0.2f;
+    private const float POURTARGET = 1f/3f;
     private const float THRESHOLD = 100;
 
     private DriverController dc;
