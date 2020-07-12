@@ -27,6 +27,7 @@ public class CoffeeController : MonoBehaviour
     private float pourVelocity = 10;
     private float coffeeRatio = 0;
     private float milkRatio = 0;
+    private const float THRESHOLD = 200;
 
     // Start is called before the first frame update
     void Start()
@@ -51,11 +52,6 @@ public class CoffeeController : MonoBehaviour
             break;
             case "none":
             break;
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            NextStep();
         }
     }
 
@@ -125,6 +121,11 @@ public class CoffeeController : MonoBehaviour
         }
 
         grindGame.UpdateBar(currentCup.grindQuality);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextStep();
+        }
     }
 
     public void SteamMilk()
@@ -144,6 +145,11 @@ public class CoffeeController : MonoBehaviour
         }
 
         steamGame.UpdateBar(steamBarPos);
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextStep();
+        }
     }
 
     public void PourCoffee()
@@ -162,7 +168,12 @@ public class CoffeeController : MonoBehaviour
         }
 
         // quality = pour ratio percentage distance from perfect pour ratio
-        currentCup.pourQuality = (float) (1 - Math.Abs(0.2 - (coffeeRatio / (coffeeRatio + milkRatio))));
+        currentCup.pourQuality = (1 - Math.Abs(0.2f - (coffeeRatio / (coffeeRatio + milkRatio))));
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            NextStep();
+        }
     }
 
     public void SendCup()
