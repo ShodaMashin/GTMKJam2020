@@ -10,6 +10,7 @@ namespace Controllers
     {
         public GameObject projPrefab;
         public GameObject enemyAPrefab;
+        public GameObject gameOverScreen;
         public GameObject coffeeScene;
         public GameObject cursorObject;
 
@@ -18,6 +19,8 @@ namespace Controllers
         private Camera _cam;
         private float _repeatRate = 10.0f;
         private int difficultyLevel = 0;
+
+        public bool isGameOver = false;
         
         
         // Start is called before the first frame update
@@ -27,6 +30,8 @@ namespace Controllers
             
             InvokeRepeating(nameof(UpDifficulty), 0.0f, 30.0f);
             StartCoroutine(SpawnEnemy());
+
+            gameOverScreen.SetActive(false);
             
             sceneSwitchButton.onClick.AddListener(SceneSwitch);
         }
@@ -41,6 +46,11 @@ namespace Controllers
             {
                 var newProj = Instantiate(projPrefab, GameObject.Find("BulletStartPos").transform.position, Quaternion.identity);
                 newProj.GetComponent<ProjectileController>().target = _cam.ScreenToWorldPoint(Input.mousePosition);
+            }
+
+            if (Storage.BusHealth <= 0 && !isGameOver)
+            {
+                EndGame();
             }
         }
 
@@ -58,6 +68,13 @@ namespace Controllers
         {
             difficultyLevel += 1;
             _repeatRate = 10.0f / difficultyLevel;
+        }
+
+        public void EndGame()
+        {
+            Debug.Log("GameOver");
+            gameOverScreen.SetActive(true);
+            isGameOver = true;
         }
 
         void SceneSwitch()

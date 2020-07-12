@@ -9,7 +9,7 @@ public class DriverController : MonoBehaviour
 {
     // Once value reaches zero driver falls asleep
     [SerializeField]
-    private float awakeLevel = 100f;
+    public float awakeLevel = 100f;
     [SerializeField]
     private float decayRate = 1f;
     [SerializeField]
@@ -47,6 +47,10 @@ public class DriverController : MonoBehaviour
     public void giveCoffee(CoffeeCup cup)
     {
         awakeLevel += (cup.totalQuality / 100) * COFFEEVALUE;
+        if (awakeLevel > 100)
+        {
+            awakeLevel = 100f;
+        }
     }
 
     private void decay()

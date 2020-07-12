@@ -43,8 +43,8 @@ namespace Controllers
             steamCanvas.enabled = false;
             pourCanvas.enabled = false;
 
-            dc = GetComponent<DriverController>();
-        }
+        dc = FindObjectOfType<DriverController>();
+    }
 
         // Update is called once per frame
         void Update()
@@ -114,16 +114,19 @@ namespace Controllers
             steamBarPos = 0;
             steamBarVelocity = 200;
 
-            coffeeRatio = 0;
-            milkRatio = 0;
-        }
+        coffeeRatio = 0;
+        milkRatio = 0;
+
+        grindGame.ResetSprite();
+        steamGame.ResetSprite();
+    }
 
         public void GrindCoffee()
         {
             char keyPressed = ' ';
 
-            if (Input.GetKeyDown(KeyCode.A)) keyPressed = 'a';
-            if (Input.GetKeyDown(KeyCode.D)) keyPressed = 'd';
+            Debug.Log(currentCup.grindQuality);
+            grindGame.UpdateSprite();
 
             if (keyPressed != lastKeyPressed && keyPressed != ' ')
             {
@@ -132,8 +135,11 @@ namespace Controllers
 
                 Debug.Log(currentCup.grindQuality);
 
-                lastKeyPressed = keyPressed;
-            }
+        if (Input.GetKeyDown(KeyCode.Space) && currentCup.grindQuality > 0)
+        {
+            NextStep();
+        } 
+    }
 
             grindGame.UpdateBar(currentCup.grindQuality);
 
@@ -143,7 +149,7 @@ namespace Controllers
             }
         }
 
-        public void SteamMilk()
+        if (Input.GetKeyDown(KeyCode.S) && steamBarVelocity != 0)
         {
             // TODO logic for milk steaming and interact with the SteamingRenderer
             steamBarPos += steamBarVelocity * Time.deltaTime;
@@ -159,19 +165,18 @@ namespace Controllers
                 steamBarPos = 0;
             }
 
-            if (Input.GetKeyDown(KeyCode.S))
-            {
-                steamBarVelocity = 0;
+            steamGame.UpdateSprite();
 
-                float quality;
-                if(steamBarPos < 50)
-                {
-                    quality = steamBarPos * 2;
-                }
-                else
-                {
-                    quality = -(steamBarPos - 100) * 2;
-                }
+            currentCup.milkQuality = quality;
+        }
+
+        if(steamBarVelocity == 0 && Input.GetKeyDown(KeyCode.R))
+        {
+            steamBarVelocity = 200;
+            steamBarPos = 0;
+
+            steamGame.UpdateSprite();
+        }
 
                 currentCup.milkQuality = quality;
             }
@@ -184,9 +189,15 @@ namespace Controllers
 
             steamGame.UpdateBar(steamBarPos);
 
-            if (Input.GetKeyDown(KeyCode.Space) && steamBarVelocity == 0)
+        pourGame.UpdateSprite("noPour");
+
+        if (coffeeRatio + milkRatio <= THRESHOLD * 2)
+        {
+            if (keyCoffee)
             {
-                NextStep();
+                coffeeRatio += pourVelocity * Time.deltaTime;
+                pourGame.UpdateSprite("pourCoffee");
+                Debug.Log(coffeeRatio);
             }
         }
 
@@ -198,25 +209,22 @@ namespace Controllers
 
             if (coffeeRatio + milkRatio <= THRESHOLD * 2)
             {
-                if (keyCoffee)
-                {
-                    coffeeRatio += pourVelocity * Time.deltaTime;
-                    Debug.Log(coffeeRatio);
-                }
-                if (keyMilk)
-                {
-                    milkRatio += pourVelocity * Time.deltaTime;
-                    Debug.Log(milkRatio);
-                }
+                milkRatio += pourVelocity * Time.deltaTime;
+                pourGame.UpdateSprite("pourMilk");
+                Debug.Log(milkRatio);
             }
+            if(keyCoffee && keyMilk)
+            {
+                pourGame.UpdateSprite("pourBoth");
+            }
+        }
 
             pourGame.UpdateBar(coffeeRatio, milkRatio, THRESHOLD);
 
-            // Quality = pour ratio percentage distance from perfect pour ratio
-            // Quality is in range 0 - 100
-            currentCup.pourQuality = Math.Max(0, 100 * (1 - Math.Abs((POURTARGET - (coffeeRatio / (coffeeRatio + milkRatio))) / POURTARGET)));
-            Debug.Log("QUA:" + currentCup.pourQuality);
-            Debug.Log("VOL:" + (coffeeRatio + milkRatio));
+        // Quality = pour ratio percentage distance from perfect pour ratio
+        // Quality is in range 0 - 100
+        currentCup.pourQuality = Math.Max(0, 100 * (1 - Math.Abs((POURTARGET - (coffeeRatio / (coffeeRatio + milkRatio))) / POURTARGET)));
+        
 
             if (Input.GetKeyDown(KeyCode.Space) && (coffeeRatio + milkRatio) >= THRESHOLD)
             {
