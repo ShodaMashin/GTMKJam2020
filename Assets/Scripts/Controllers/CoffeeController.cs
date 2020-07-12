@@ -205,17 +205,25 @@ public class CoffeeController : MonoBehaviour
         bool keyCoffee = Input.GetKey(KeyCode.A);
         bool keyMilk = Input.GetKey(KeyCode.D);
 
+        pourGame.UpdateSprite("noPour");
+
         if (coffeeRatio + milkRatio <= THRESHOLD * 2)
         {
             if (keyCoffee)
             {
                 coffeeRatio += pourVelocity * Time.deltaTime;
+                pourGame.UpdateSprite("pourCoffee");
                 Debug.Log(coffeeRatio);
             }
             if (keyMilk)
             {
                 milkRatio += pourVelocity * Time.deltaTime;
+                pourGame.UpdateSprite("pourMilk");
                 Debug.Log(milkRatio);
+            }
+            if(keyCoffee && keyMilk)
+            {
+                pourGame.UpdateSprite("pourBoth");
             }
         }
 
