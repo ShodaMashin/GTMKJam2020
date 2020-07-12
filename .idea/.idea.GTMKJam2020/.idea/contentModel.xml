@@ -1,8 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="C:\GTMK\GTMKJam2020" t="IncludeFlat">
+    <e p="C:\GTMK\GTMKJam2020" t="IncludeRecursive">
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Scripts" t="Include">
+          <e p="CoffeeCup.cs" t="Include" />
+          <e p="Controllers" t="Include">
+            <e p="BusController.cs" t="Include" />
+            <e p="CoffeeController.cs" t="Include" />
+            <e p="CursorController.cs" t="Include" />
+            <e p="DriverController.cs" t="Include" />
+            <e p="EnemyController.cs" t="Include" />
+            <e p="GameManager.cs" t="Include" />
+            <e p="ProjectileController.cs" t="Include" />
+          </e>
+          <e p="Generics" t="Include">
+            <e p="GenericEnemy.cs" t="Include" />
+          </e>
+          <e p="GrindingRenderer.cs" t="Include" />
+          <e p="PouringRenderer.cs" t="Include" />
+          <e p="SteamingRenderer.cs" t="Include" />
+          <e p="Storage.cs" t="Include" />
+        </e>
+      </e>
       <e p="GTMKJam2020.sln" t="IncludeFlat" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Temp\bin" t="ExcludeRecursive" />
     </e>
     <e p="C:\Users\bensp\AppData\Local\JetBrains\Rider2020.1\extResources" t="IncludeRecursive" />
     <e p="C:\Users\bensp\AppData\Local\JetBrains\Rider2020.1\resharper-host\Local\Transient\ReSharperHost\v201\SolutionCaches\_GTMKJam2020.-187844934.00" t="ExcludeRecursive" />
