@@ -18,6 +18,6 @@ public class BusController : MonoBehaviour
 
     public void DamageBus(int damage)
     {
-        Debug.Log("TAKE DAMAGE");
+        Storage.BusHealth -= damage;
     }
 }

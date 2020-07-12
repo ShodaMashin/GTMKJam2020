@@ -35,7 +35,7 @@ namespace Controllers
                 Destroy(gameObject);
             } else if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("EnemyProj"))
             {
-                // other.gameObject.GetComponent<BusController>().DamageBus(5);
+                other.gameObject.GetComponent<BusController>().DamageBus(5);
                 Destroy(gameObject);
             }
         }

@@ -5,9 +5,12 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
+          <e p="CoffeeCup.cs" t="Include" />
           <e p="Controllers" t="Include">
             <e p="BusController.cs" t="Include" />
+            <e p="CoffeeController.cs" t="Include" />
             <e p="CursorController.cs" t="Include" />
+            <e p="DriverController.cs" t="Include" />
             <e p="EnemyController.cs" t="Include" />
             <e p="GameManager.cs" t="Include" />
             <e p="ProjectileController.cs" t="Include" />
@@ -15,7 +18,7 @@
           <e p="Generics" t="Include">
             <e p="GenericEnemy.cs" t="Include" />
           </e>
-          <e p="NewBehaviourScript.cs" t="Include" />
+          <e p="Storage.cs" t="Include" />
         </e>
       </e>
       <e p="GTMKJam2020.sln" t="IncludeFlat" />

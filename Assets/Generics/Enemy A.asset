@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Enemy A
   m_EditorClassIdentifier: 
   enemyHealth: 100
-  enemySpeed: 10
+  enemySpeed: 3
   enemyType: A
   attackSpeed: 3
   sprite: {fileID: 21300000, guid: cca98d4a70c6ec6498f51183f3a6e236, type: 3}
