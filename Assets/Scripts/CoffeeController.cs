@@ -24,10 +24,10 @@ public class CoffeeController : MonoBehaviour
     private float steamBarVelocity = 200;
 
     // Pouring game
-    private float pourVelocity = 10;
+    private float pourVelocity = 40;
     private float coffeeRatio = 0;
     private float milkRatio = 0;
-    private const float THRESHOLD = 200;
+    private const float THRESHOLD = 100;
 
     // Start is called before the first frame update
     void Start()
@@ -51,6 +51,10 @@ public class CoffeeController : MonoBehaviour
                 PourCoffee();
             break;
             case "none":
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    NextStep();
+                }
             break;
         }
     }
@@ -154,23 +158,27 @@ public class CoffeeController : MonoBehaviour
 
     public void PourCoffee()
     {
-        //temp inputs
-        bool keyCoffee = Input.GetKeyDown(KeyCode.A);
-        bool keyMilk = Input.GetKeyDown(KeyCode.D);
+        // Inputs
+        bool keyCoffee = Input.GetKey(KeyCode.A);
+        bool keyMilk = Input.GetKey(KeyCode.D);
 
-        if (keyCoffee)
+        if (coffeeRatio + milkRatio <= THRESHOLD * 2)
         {
-            coffeeRatio += pourVelocity * Time.deltaTime;
-        }
-        if (keyMilk)
-        {
-            milkRatio += pourVelocity * Time.deltaTime;
+            if (keyCoffee)
+            {
+                coffeeRatio += pourVelocity * Time.deltaTime;
+            }
+            if (keyMilk)
+            {
+                milkRatio += pourVelocity * Time.deltaTime;
+            }
         }
 
-        // quality = pour ratio percentage distance from perfect pour ratio
-        currentCup.pourQuality = (1 - Math.Abs(0.2f - (coffeeRatio / (coffeeRatio + milkRatio))));
+        // Quality = pour ratio percentage distance from perfect pour ratio
+        // Quality is in range 0 - 100
+        currentCup.pourQuality = 100 * (1 - Math.Abs(0.2f - (coffeeRatio / (coffeeRatio + milkRatio))));
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && (coffeeRatio + milkRatio) >= THRESHOLD)
         {
             NextStep();
         }
