@@ -44,7 +44,7 @@ public class CoffeeController : MonoBehaviour
         steamCanvas.enabled = false;
         pourCanvas.enabled = false;
 
-        dc = GetComponent<DriverController>();
+        dc = FindObjectOfType<DriverController>();
     }
 
     // Update is called once per frame
@@ -224,8 +224,7 @@ public class CoffeeController : MonoBehaviour
         // Quality = pour ratio percentage distance from perfect pour ratio
         // Quality is in range 0 - 100
         currentCup.pourQuality = Math.Max(0, 100 * (1 - Math.Abs((POURTARGET - (coffeeRatio / (coffeeRatio + milkRatio))) / POURTARGET)));
-        Debug.Log("QUA:" + currentCup.pourQuality);
-        Debug.Log("VOL:" + (coffeeRatio + milkRatio));
+        
 
         if (Input.GetKeyDown(KeyCode.Space) && (coffeeRatio + milkRatio) >= THRESHOLD)
         {

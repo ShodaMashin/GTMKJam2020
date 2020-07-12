@@ -47,6 +47,10 @@ public class DriverController : MonoBehaviour
     public void giveCoffee(CoffeeCup cup)
     {
         awakeLevel += (cup.totalQuality / 100) * COFFEEVALUE;
+        if (awakeLevel > 100)
+        {
+            awakeLevel = 100f;
+        }
     }
 
     private void decay()
