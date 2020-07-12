@@ -11,7 +11,7 @@ public class SteamingRenderer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        maxWidth = bar.rect.width / 2;
+        maxWidth = bar.rect.width;
         minWidth = -(bar.rect.width / 2);
         center = slider.position.x;
     }

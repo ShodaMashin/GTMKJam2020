@@ -21,7 +21,7 @@ public class CoffeeController : MonoBehaviour
 
     // Steaming game
     private float steamBarPos;
-    private float steamBarVelocity = 100;
+    private float steamBarVelocity = 200;
 
     // Pouring game
     private float pourVelocity = 10;

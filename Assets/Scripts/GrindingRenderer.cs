@@ -11,8 +11,6 @@ public class GrindingRenderer : MonoBehaviour
     void Start()
     {
         maxWidth = progressBar.rect.width;
-
-        progressBar.offsetMax = new Vector2(0, 0);
     }
 
     public void UpdateBar(float percentage)
@@ -24,6 +22,6 @@ public class GrindingRenderer : MonoBehaviour
             currentWidth = maxWidth;
         }
 
-        progressBar.offsetMax = new Vector2(currentWidth, 16 / 2);
+        progressBar.sizeDelta = new Vector2(currentWidth - maxWidth - 6, progressBar.sizeDelta.y);
     }
 }
