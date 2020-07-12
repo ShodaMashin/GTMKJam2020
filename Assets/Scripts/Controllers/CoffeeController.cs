@@ -117,6 +117,9 @@ public class CoffeeController : MonoBehaviour
 
         coffeeRatio = 0;
         milkRatio = 0;
+
+        grindGame.ResetSprite();
+        steamGame.ResetSprite();
     }
 
     public void GrindCoffee()
@@ -132,6 +135,7 @@ public class CoffeeController : MonoBehaviour
             if (currentCup.grindQuality > 100) currentCup.grindQuality = 100;
 
             Debug.Log(currentCup.grindQuality);
+            grindGame.UpdateSprite();
 
             lastKeyPressed = keyPressed;
         }
@@ -141,7 +145,7 @@ public class CoffeeController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && currentCup.grindQuality > 0)
         {
             NextStep();
-        }
+        } 
     }
 
     public void SteamMilk()
@@ -160,7 +164,7 @@ public class CoffeeController : MonoBehaviour
             steamBarPos = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S) && steamBarVelocity != 0)
         {
             steamBarVelocity = 0;
 
@@ -174,6 +178,8 @@ public class CoffeeController : MonoBehaviour
                 quality = -(steamBarPos - 100) * 2;
             }
 
+            steamGame.UpdateSprite();
+
             currentCup.milkQuality = quality;
         }
 
@@ -181,6 +187,8 @@ public class CoffeeController : MonoBehaviour
         {
             steamBarVelocity = 200;
             steamBarPos = 0;
+
+            steamGame.UpdateSprite();
         }
 
         steamGame.UpdateBar(steamBarPos);
