@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,11 @@ public class CoffeeController : MonoBehaviour
     // Steaming game
     private float steamBarPos;
     private float steamBarVelocity = 100;
+
+    // Pouring game
+    private float pourVelocity = 10;
+    private float coffeeRatio = 0;
+    private float milkRatio = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +102,9 @@ public class CoffeeController : MonoBehaviour
         currentCup.pourQuality = 0;
 
         steamBarPos = 0;
+
+        coffeeRatio = 0;
+        milkRatio = 0;
     }
 
     public void GrindCoffee()
@@ -139,9 +148,21 @@ public class CoffeeController : MonoBehaviour
 
     public void PourCoffee()
     {
-        float quality = 0;
+        //temp inputs
+        bool keyCoffee = Input.GetKeyDown(KeyCode.A);
+        bool keyMilk = Input.GetKeyDown(KeyCode.D);
 
-        currentCup.pourQuality = quality;
+        if (keyCoffee)
+        {
+            coffeeRatio += pourVelocity * Time.deltaTime;
+        }
+        if (keyMilk)
+        {
+            milkRatio += pourVelocity * Time.deltaTime;
+        }
+
+        // quality = pour ratio percentage distance from perfect pour ratio
+        currentCup.pourQuality = (float) (1 - Math.Abs(0.2 - (coffeeRatio / (coffeeRatio + milkRatio))));
     }
 
     public void SendCup()
