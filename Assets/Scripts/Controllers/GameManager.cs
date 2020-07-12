@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Diagnostics.Contracts;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
