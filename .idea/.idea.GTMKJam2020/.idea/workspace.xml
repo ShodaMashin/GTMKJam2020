@@ -19,16 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="830f64c2-98c6-40ae-a56b-79625c02e1c3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GTMKJam2020/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GTMKJam2020/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.GTMKJam2020/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GTMKJam2020/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Projectile.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Projectile.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/ProjectileEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/ProjectileEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/bullet.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/bullet.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/bulletEnemy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/bulletEnemy.png.meta" beforeDir="false" />
-    </list>
+    <list default="true" id="830f64c2-98c6-40ae-a56b-79625c02e1c3" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,10 +53,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/BusController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/GameManager.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Storage.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/CoffeeController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/CursorController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/CameraController.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/ProjectileController.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Controllers/CoffeeController.cs" />
       </list>
     </option>
   </component>
