@@ -7,10 +7,13 @@ namespace Controllers
     {
         public GameObject projPrefab;
         public GameObject enemyAPrefab;
+        public GameObject gameOverScreen;
 
         private Camera _cam;
         private float _repeatRate = 10.0f;
         private int difficultyLevel = 0;
+
+        public bool isGameOver = false;
         
         // Start is called before the first frame update
         void Start()
@@ -19,6 +22,8 @@ namespace Controllers
             
             InvokeRepeating(nameof(UpDifficulty), 0.0f, 30.0f);
             StartCoroutine(SpawnEnemy());
+
+            gameOverScreen.SetActive(false);
         }
         
         // Speed of spawning, 1 every 10 seconds to start, up by 1 every 30 seconds
@@ -31,6 +36,11 @@ namespace Controllers
             {
                 var newProj = Instantiate(projPrefab, GameObject.Find("BulletStartPos").transform.position, Quaternion.identity);
                 newProj.GetComponent<ProjectileController>().target = _cam.ScreenToWorldPoint(Input.mousePosition);
+            }
+
+            if (Storage.BusHealth <= 0 && !isGameOver)
+            {
+                EndGame();
             }
         }
 
@@ -48,6 +58,13 @@ namespace Controllers
         {
             difficultyLevel += 1;
             _repeatRate = 10.0f / difficultyLevel;
+        }
+
+        public void EndGame()
+        {
+            Debug.Log("GameOver");
+            gameOverScreen.SetActive(true);
+            isGameOver = true;
         }
     }
 }
